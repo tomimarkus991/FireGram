@@ -5,7 +5,7 @@ import FiregramState from "./contexts/firegram/FiregramState";
 const App = () => {
   return (
     <FiregramState>
-      <div>
+      <div className="App">
         <Home />
       </div>
     </FiregramState>
