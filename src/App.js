@@ -1,10 +1,14 @@
 import React from "react";
+import Home from "./components/pages/Home";
+import FiregramState from "./contexts/firegram/FiregramState";
 
 const App = () => {
   return (
-    <div>
-      <span>helo</span>
-    </div>
+    <FiregramState>
+      <div>
+        <Home />
+      </div>
+    </FiregramState>
   );
 };
 
