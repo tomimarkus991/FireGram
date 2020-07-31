@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { SET_FILE, SET_ERROR } from "../types";
+import { SET_FILE, SET_ERROR, SET_SELECTED_IMG } from "../types";
 import FiregramContext from "./firegramContext";
 import FiregramReducer from "./firegramReducer";
 
@@ -7,9 +7,10 @@ const FiregramState = ({ children }) => {
   const initialState = {
     file: null,
     error: null,
+    selectedImg: null,
   };
   const [state, dispatch] = useReducer(FiregramReducer, initialState);
-  const { file, error } = state;
+  const { file, error, selectedImg } = state;
 
   const uploadChangeHandler = (e) => {
     const imageTypes = ["image/png", "image/jpeg"];
@@ -22,13 +23,28 @@ const FiregramState = ({ children }) => {
       setError("Please select an image file(png or jpeg");
     }
   };
+  const setSelectedImg = (imgUrl) =>
+    dispatch({ type: SET_SELECTED_IMG, payload: imgUrl });
+  const checkImageClick = (e) => {
+    if (e.target.tagName !== "IMG") {
+      setSelectedImg(null);
+    }
+  };
   const setFile = (file) => dispatch({ type: SET_FILE, payload: file });
 
   const setError = (error) => dispatch({ type: SET_ERROR, payload: error });
 
   return (
     <FiregramContext.Provider
-      value={{ file, setFile, error, uploadChangeHandler }}
+      value={{
+        file,
+        setFile,
+        error,
+        selectedImg,
+        setSelectedImg,
+        uploadChangeHandler,
+        checkImageClick,
+      }}
     >
       {children}
     </FiregramContext.Provider>

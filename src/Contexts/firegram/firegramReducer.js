@@ -1,4 +1,4 @@
-import { SET_FILE, SET_ERROR } from "../types";
+import { SET_FILE, SET_ERROR, SET_SELECTED_IMG } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -11,6 +11,11 @@ export default (state, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case SET_SELECTED_IMG:
+      return {
+        ...state,
+        selectedImg: action.payload,
       };
     default:
       break;
