@@ -27,7 +27,9 @@ const FiregramState = ({ children }) => {
   const setError = (error) => dispatch({ type: SET_ERROR, payload: error });
 
   return (
-    <FiregramContext.Provider value={{ file, error, uploadChangeHandler }}>
+    <FiregramContext.Provider
+      value={{ file, setFile, error, uploadChangeHandler }}
+    >
       {children}
     </FiregramContext.Provider>
   );

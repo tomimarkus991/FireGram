@@ -1,8 +1,14 @@
-import React from "react";
-import UploadForm from "../UploadForm";
+import React, { Fragment } from "react";
+import UploadForm from "../upload/UploadForm";
+import Title from "../layout/Title";
 
 const Home = () => {
-  return <UploadForm />;
+  return (
+    <Fragment>
+      <Title />
+      <UploadForm />
+    </Fragment>
+  );
 };
 
 export default Home;
